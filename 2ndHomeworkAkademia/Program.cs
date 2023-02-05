@@ -7,7 +7,7 @@ internal class Program
     static void Main(string[] args)
     {
         var randomizer = new Random();
-        var numberToGuess = randomizer.Next(1, 101);
+        var numberToGuess = randomizer.Next(0, 101);
         var counter = 1;
         var userInput = 0;
 
@@ -22,7 +22,7 @@ internal class Program
                     throw new Exception ("Parsing error.");
                 else
                 {
-                    if (userInput > 100 || userInput < 1)
+                    if (userInput > 100 || userInput < 0)
                         throw new Exception("userInput out of range.");
 
                     else if (userInput < numberToGuess)
@@ -46,7 +46,7 @@ internal class Program
             catch (Exception)
             {          
                 Console.WriteLine("Podana została nieprawidłowa wartość.");
-                Console.WriteLine("Podaj liczbę z zakresu od 1 do 100.");
+                Console.WriteLine("Podaj liczbę z zakresu od 0 do 100.");
                 Console.WriteLine("Spróbuj ponownie: ");
             }
 
