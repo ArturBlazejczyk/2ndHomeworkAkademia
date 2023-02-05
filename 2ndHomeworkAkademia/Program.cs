@@ -11,7 +11,7 @@ internal class Program
         var counter = 1;
         var userInput = 0;
 
-        Console.WriteLine("Wylosowałem dla Ciebie liczbę.");
+        Console.WriteLine("Wylosowałem dla Ciebie liczbę pomiędzy 0 a 100");
         Console.Write("Spróbuj ją odgadnąć: ");
         
         do
