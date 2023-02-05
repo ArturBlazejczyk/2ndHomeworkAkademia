@@ -23,26 +23,7 @@ internal class Program
                     throw new Exception ("Parsing error.");
                 else
                 {
-                    CheckIfAnswerIsCorrrect(userInput, numberToGuess);
-
-                    //if (userInput > 100 || userInput < 0)
-                    //    throw new ArgumentOutOfRangeException("userInput out of range.");
-
-                    //else if (userInput < numberToGuess)
-                    //{
-                    //    Console.WriteLine("Niestety, podana przez Ciebie liczba jest za mała.");
-                    //    Console.WriteLine("Spróbuj ponownie: ");
-                    //}
-                    //else if (userInput > numberToGuess)
-                    //{
-                    //    Console.WriteLine("Niestety, podana przez Ciebie liczba jest za duża.");
-                    //    Console.WriteLine("Spróbuj ponownie: ");
-                    //}
-                    //else if (userInput == numberToGuess)
-                    //{
-                    //    Console.WriteLine("\nUdało Ci się!");
-                    //    Console.WriteLine($"Odgadłeś wylosowaną liczbę w {counter} próbach");
-                    //}
+                    IsAnswerCorrect(userInput, numberToGuess);
                     counter++;
                 }
             }
@@ -64,7 +45,7 @@ internal class Program
         Console.WriteLine($"Odgadłeś wylosowaną liczbę w {counter} próbach");
     }
 
-    private static void CheckIfAnswerIsCorrrect(int userInput, int numberToGuess)
+    private static void IsAnswerCorrect(int userInput, int numberToGuess)
     {
 
         if (userInput > 100 || userInput < 0)
