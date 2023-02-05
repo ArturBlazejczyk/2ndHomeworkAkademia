@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.Metrics;
 using System.Net.WebSockets;
+using System.Security.Cryptography;
 
 internal class Program
 {
@@ -7,30 +8,34 @@ internal class Program
     {
         var randomizer = new Random();
         var numberToGuess = randomizer.Next(1, 100);
-        var counter = 0;
+        var counter = 1;
+        var userInput = 0;
 
         Console.WriteLine("Wylosowałem dla Ciebie liczbę.");
         Console.Write("Spróbuj ją odgadnąć: ");
-        int userInput = 0;
+        
         do
         {
             try
             {
                 if (!int.TryParse(Console.ReadLine(), out userInput))
                 {
-                    throw new Exception("Podana została nieprawidłowa liczba.");
+                    throw new Exception("Parsing error.");
                 }
                 else
                 {
-                    if (userInput < numberToGuess)
+                    if (userInput > 100 || userInput < 1)
+                    {
+                        throw new Exception("userInput out of range.");
+                    }
+
+                    else if (userInput < numberToGuess)
                     {
                         Console.WriteLine("Niestety, podana przez Ciebie liczba jest za mała.");
-                        Console.Write("Spróbuj ponownie: ");
                     }
                     else if (userInput > numberToGuess)
                     {
                         Console.WriteLine("Niestety, podana przez Ciebie liczba jest za duża.");
-                        Console.Write("Spróbuj ponownie: ");
                     }
                     else if (userInput == numberToGuess)
                     {
@@ -41,12 +46,16 @@ internal class Program
                 }
             }
             catch (Exception)
-            {
+            {          
                 Console.WriteLine("Podana została nieprawidłowa liczba.");
                 continue;
             }
-            
-        } 
+            finally
+            {
+                Console.WriteLine("Spróbuj ponownie: ");
+            }
+
+            } 
         while (userInput != numberToGuess);
     }
 }
