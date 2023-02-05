@@ -19,15 +19,11 @@ internal class Program
             try
             {
                 if (!int.TryParse(Console.ReadLine(), out userInput))
-                {
                     throw new Exception ("Parsing error.");
-                }
                 else
                 {
                     if (userInput > 100 || userInput < 1)
-                    {
                         throw new Exception("userInput out of range.");
-                    }
 
                     else if (userInput < numberToGuess)
                     {
