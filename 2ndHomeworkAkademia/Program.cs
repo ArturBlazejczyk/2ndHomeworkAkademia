@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.Metrics;
 using System.Net.WebSockets;
+using System.Reflection;
 using System.Security.Cryptography;
 
 internal class Program
@@ -11,7 +12,7 @@ internal class Program
         var counter = 1;
         var userInput = 0;
 
-        Console.WriteLine("Wylosowałem dla Ciebie liczbę pomiędzy 0 a 100");
+        Console.WriteLine("Wylosowałem dla Ciebie liczbę pomiędzy 0 a 100.");
         Console.Write("Spróbuj ją odgadnąć: ");
         
         do
@@ -22,24 +23,26 @@ internal class Program
                     throw new Exception ("Parsing error.");
                 else
                 {
-                    if (userInput > 100 || userInput < 0)
-                        throw new ArgumentOutOfRangeException("userInput out of range.");
+                    CheckIfAnswerIsCorrrect(userInput, numberToGuess);
 
-                    else if (userInput < numberToGuess)
-                    {
-                        Console.WriteLine("Niestety, podana przez Ciebie liczba jest za mała.");
-                        Console.WriteLine("Spróbuj ponownie: ");
-                    }
-                    else if (userInput > numberToGuess)
-                    {
-                        Console.WriteLine("Niestety, podana przez Ciebie liczba jest za duża.");
-                        Console.WriteLine("Spróbuj ponownie: ");
-                    }
-                    else if (userInput == numberToGuess)
-                    {
-                        Console.WriteLine("\nUdało Ci się!");
-                        Console.WriteLine($"Odgadłeś wylosowaną liczbę w {counter} próbach");
-                    }
+                    //if (userInput > 100 || userInput < 0)
+                    //    throw new ArgumentOutOfRangeException("userInput out of range.");
+
+                    //else if (userInput < numberToGuess)
+                    //{
+                    //    Console.WriteLine("Niestety, podana przez Ciebie liczba jest za mała.");
+                    //    Console.WriteLine("Spróbuj ponownie: ");
+                    //}
+                    //else if (userInput > numberToGuess)
+                    //{
+                    //    Console.WriteLine("Niestety, podana przez Ciebie liczba jest za duża.");
+                    //    Console.WriteLine("Spróbuj ponownie: ");
+                    //}
+                    //else if (userInput == numberToGuess)
+                    //{
+                    //    Console.WriteLine("\nUdało Ci się!");
+                    //    Console.WriteLine($"Odgadłeś wylosowaną liczbę w {counter} próbach");
+                    //}
                     counter++;
                 }
             }
@@ -58,5 +61,28 @@ internal class Program
 
         } 
         while (userInput != numberToGuess);
+        Console.WriteLine($"Odgadłeś wylosowaną liczbę w {counter} próbach");
+    }
+
+    private static void CheckIfAnswerIsCorrrect(int userInput, int numberToGuess)
+    {
+
+        if (userInput > 100 || userInput < 0)
+            throw new ArgumentOutOfRangeException("userInput out of range.");
+
+        else if (userInput < numberToGuess)
+        {
+            Console.WriteLine("Niestety, podana przez Ciebie liczba jest za mała.");
+            Console.WriteLine("Spróbuj ponownie: ");
+        }
+        else if (userInput > numberToGuess)
+        {
+            Console.WriteLine("Niestety, podana przez Ciebie liczba jest za duża.");
+            Console.WriteLine("Spróbuj ponownie: ");
+        }
+        else if (userInput == numberToGuess)
+        {
+            Console.WriteLine("\nUdało Ci się!");
+        }
     }
 }
