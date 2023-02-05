@@ -23,7 +23,7 @@ internal class Program
                 else
                 {
                     if (userInput > 100 || userInput < 0)
-                        throw new Exception("userInput out of range.");
+                        throw new ArgumentOutOfRangeException("userInput out of range.");
 
                     else if (userInput < numberToGuess)
                     {
@@ -43,14 +43,20 @@ internal class Program
                     counter++;
                 }
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Podana liczba nie mieści się w zakresie losowania.");
+                Console.WriteLine("Podaj liczbę z zakresu od 0 do 100.");
+                Console.WriteLine("Spróbuj ponownie: ");
+            }
             catch (Exception)
-            {          
+            {
                 Console.WriteLine("Podana została nieprawidłowa wartość.");
                 Console.WriteLine("Podaj liczbę z zakresu od 0 do 100.");
                 Console.WriteLine("Spróbuj ponownie: ");
             }
 
-            } 
+        } 
         while (userInput != numberToGuess);
     }
 }
