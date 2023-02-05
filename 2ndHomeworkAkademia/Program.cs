@@ -50,7 +50,7 @@ internal class Program
             catch (Exception)
             {          
                 Console.WriteLine("Podana została nieprawidłowa wartość.");
-                Console.WriteLine("Podaj liczbę z zakresu od 1 do 100");
+                Console.WriteLine("Podaj liczbę z zakresu od 1 do 100.");
                 Console.WriteLine("Spróbuj ponownie: ");
             }
 
