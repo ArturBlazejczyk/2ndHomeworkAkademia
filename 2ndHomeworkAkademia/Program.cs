@@ -21,11 +21,9 @@ internal class Program
             {
                 if (!int.TryParse(Console.ReadLine(), out userInput))
                     throw new Exception ("Parsing error.");
-                else
-                {
-                    IsAnswerCorrect(userInput, numberToGuess);
-                    counter++;
-                }
+
+                IsAnswerCorrect(userInput, numberToGuess);
+                counter++;
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -47,7 +45,6 @@ internal class Program
 
     private static void IsAnswerCorrect(int userInput, int numberToGuess)
     {
-
         if (userInput > 100 || userInput < 0)
             throw new ArgumentOutOfRangeException("userInput out of range.");
 
